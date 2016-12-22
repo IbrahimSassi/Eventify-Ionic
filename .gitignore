@@ -9,3 +9,4 @@ plugins/
 bower_components/
 .idea
 .DS_Store
+lib/

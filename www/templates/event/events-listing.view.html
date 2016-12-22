@@ -1,0 +1,34 @@
+<ion-view>
+
+
+  <ion-content padding="true">
+
+    <div ng-repeat="event in event.events" class="list card">
+
+      <div class="item item-avatar">
+        <img src="{{event.backgroundImage}}">
+        <h2>{{event.title}}</h2>
+        <p>{{event.theme}}</p>
+      </div>
+
+      <div class="item item-image">
+        <img src="{{event.backgroundImage}}">
+      </div>
+
+      <a class="item calm" href="#">
+        <i class="icon ion-bookmark"></i>
+        Bookmark
+      </a>
+      <a class="item assertive" href="#">
+        <i class="icon ion-android-favorite"></i>
+        Like
+      </a>
+
+
+
+
+    </div>
+
+
+  </ion-content>
+</ion-view>
