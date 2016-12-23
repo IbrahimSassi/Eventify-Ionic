@@ -20,7 +20,8 @@
   function ConfigFN($stateProvider, $urlRouterProvider) {
 
     $stateProvider
-
+      // On met app.events pck c une state imbriqué dans la state app que vous trouvez dans le home Controller
+    // on fait comme ca , lorque on veut attacher cette state a notre side menu cree au niveau de state 'app'
       .state('app.events', {
         url: "/events",
         cache: false,
@@ -30,19 +31,27 @@
             templateUrl: "templates/event/events-listing.view.html"
           }
         }
-
       })
+
+      //ce type de state sont des etats indépendantes
       .state('events-map', {
         url: "/events/map",
         cache: false,
         controller: 'EventMapListCtrl as EventMap',
         templateUrl: "templates/event/events-listing-map.view.html"
       })
-      .state('events-details', {
+
+
+      .state('app.events-details', {
         url: "/events/detail/:id",
         cache: false,
-        controller: 'EventDetailCtrl as event',
-        templateUrl: "templates/event/event-detail.view.html"
+        views: {
+          'menuContent': {
+            controller: 'EventDetailCtrl as event',
+            templateUrl: "templates/event/event-detail.view.html"
+          }
+        }
+
       })
     ;
 

@@ -19,10 +19,11 @@
       lat: 36.806494799999996,
       long: 10.181531600000001
     };
+
+
     this.getAllEvents = getAllEventsFN;
     this.getEventById = getEventByIdFN;
     this.ListingEventsInMap = ListingEventsInMapFN;
-
 
     function getAllEventsFN() {
       return EventFactory.query().$promise;

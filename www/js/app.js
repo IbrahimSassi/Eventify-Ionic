@@ -8,7 +8,8 @@
     'ionic',
     'ngResource',
     'EventifyApp.home',
-    'EventifyApp.event'
+    'EventifyApp.event',
+    'EventifyApp.wishlist'
   ])
 
     .config(ConfigFN)
