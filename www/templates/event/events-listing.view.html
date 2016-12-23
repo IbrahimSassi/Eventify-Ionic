@@ -1,7 +1,15 @@
-<ion-view ng-init="event.getEvents()">
+<ion-view view-title="Events" ng-init="event.getEvents()">
 
 
   <ion-content padding="true">
+    <div class="bar bar-header item-input-inset">
+      <label class="item-input-wrapper">
+        <i class="icon ion-ios-search placeholder-icon"></i>
+        <input type="search"
+               ng-model="event.search"
+               placeholder="Search ..">
+      </label>
+    </div>
 
 
     <ion-refresher
@@ -10,16 +18,16 @@
     </ion-refresher>
 
 
-    <div ng-repeat="event in event.events" class="list card">
+    <div ng-repeat="event in event.events | filter:event.search" class="list card">
 
       <div class="item item-avatar">
-        <img src="{{event.backgroundImage}}">
+        <img ng-src="{{event.backgroundImage}}">
         <h2>{{event.title}} </h2>
         <p>{{event.theme}}</p>
       </div>
 
-      <a  ui-sref="events-details({id:event.id})" class="item item-image">
-        <img src="{{event.backgroundImage}}">
+      <a ui-sref="events-details({id:event.id})" class="item item-image">
+        <img ng-src="{{event.backgroundImage}}">
       </a>
 
       <a class="item calm" href="#">
@@ -30,10 +38,11 @@
     </div>
 
     <ion-infinite-scroll
+      ng-if="event.events.length!=event.allEvents.length"
+      icon="icon ion-loading-c"
       on-infinite="event.loadMore()"
       distance="1%">
     </ion-infinite-scroll>
-
 
 
   </ion-content>

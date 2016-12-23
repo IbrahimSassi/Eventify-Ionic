@@ -40,9 +40,9 @@
           .then(function (position) {
             console.log("position", position);
 
-            var params = {
-              lat: vm.myPostion.lat,
-              lon: vm.myPostion.long
+            vm.myPostion = {
+              lat: position.coords.latitude,
+              long: position.coords.longitude
             };
 
 

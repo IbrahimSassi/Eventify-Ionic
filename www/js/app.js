@@ -7,6 +7,7 @@
   angular.module('EventifyApp', [
     'ionic',
     'ngResource',
+    'EventifyApp.home',
     'EventifyApp.event'
   ])
 
@@ -33,7 +34,7 @@
 
 
     // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/events');
+    $urlRouterProvider.otherwise('/app/home');
 
   }
 

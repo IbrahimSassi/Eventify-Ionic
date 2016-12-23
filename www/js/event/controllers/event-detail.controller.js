@@ -21,6 +21,10 @@
 
     function activate() {
 
+
+      vm.myPostion =EventService.myPostion;
+      // EventService.ListingEventsInMap();
+
       vm.SelectedId = $stateParams.id;
       vm.SelectedEvent = EventService.getEventById(vm.SelectedId);
 
