@@ -1,0 +1,75 @@
+<ion-view>
+  <ion-content scroll="false">
+
+    <map center="{{EventMap.myPostion.lat}},{{EventMap.myPostion.long}}"
+         zoom="7"
+         style="width: 100%;height: 100%;margin:0;padding:0"
+    >
+
+      <marker
+        icon="img/me-marker.png"
+        position="{{[EventMap.myPostion.lat,EventMap.myPostion.long]}}">
+      </marker>
+
+      <marker ng-repeat="e in EventMap.events"
+              clickable="true"
+              on-mousedown="EventMap.showEventDetail(event,e)"
+              icon="img/event-marker.png"
+              animation="Animation.DROP"
+              position="{{[e.latitude,e.longitude]}}">
+      </marker>
+
+
+      <info-window
+        id="marker-info">
+        <div ng-non-bindable="">
+          <div class="contents">
+            <img height="120" width="200" ng-src="{{EventMap.selectedEvent.backgroundImage}}"
+                 alt=""/>
+            <h4>{{EventMap.selectedEvent.title}}</h4>
+
+            <p>{{EventMap.selectedEvent.theme}}</p>
+
+            <div class="row">
+              <div class="col">
+                <p class="address">
+                  <!--<i class="ion ion-ios-location"></i>-->
+                  <!--{{yelp.cafe.location.display_address | join:", "}}-->
+                  Category : {{EventMap.selectedEvent.category.categoryName}}<br>
+                <p><i class="icon ion-android-time"></i> Starts on : {{EventMap.selectedEvent.startTime | amCalendar:referenceTime:formats}}</p>
+                <p><i class="icon ion-calendar"></i> Ends on : {{EventMap.selectedEvent.endTime | amCalendar:referenceTime:formats}}</p>
+
+                </p>
+              </div>
+              <div class="col">
+                <p class="distance">
+                  <i class="ion ion-ios-navigate"></i>
+                  {{ EventMap.selectedDistance}} km
+
+                </p>
+                <p class="rating">
+                  <i class="ion ion-star"></i>
+                   {{EventMap.selectedEvent.rateAvg}}
+                  &nbsp;<br>
+                  <i class="ion ion-person"></i>
+                  review
+                </p>
+              </div>
+            </div>
+
+            <div class="button button-small button-assertive"
+                 ng-click="EventMap.getDirections(EventMap.selectedEvent)">Get Directions
+            </div>
+          </div>
+        </div>
+      </info-window>
+
+
+    </map>
+
+
+  </ion-content>
+</ion-view>
+
+
+

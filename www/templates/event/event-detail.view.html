@@ -3,9 +3,31 @@
 
   <ion-content padding="true">
 
-{{event.SelectedId}}
+    <div class="list card">
 
-{{event.SelectedEvent.title}}
+      <div class="item item-avatar">
+        <img ng-src="{{event.SelectedEvent.backgroundImage}}">
+        <h2>{{event.SelectedEvent.organization.organizationName}}</h2>
+        <p>
+          Created <span am-time-ago="event.SelectedEvent.createdAt" am-preprocess="unix"></span> </p>
+        </p>
+      </div>
+
+      <div class="item item-body">
+        <img class="full-image" src="{{event.SelectedEvent.backgroundImage}}">
+        <h1>{{event.SelectedEvent.title}}</h1>
+        <p><i class="icon ion-android-time"></i> Starts on : {{event.SelectedEvent.startTime | amCalendar:referenceTime:formats}}</p>
+        <p><i class="icon ion-calendar"></i> Ends on : {{event.SelectedEvent.endTime | amCalendar:referenceTime:formats}}</p>
+        <p>
+          {{event.SelectedEvent.theme}}.
+        </p>
+        <p>
+          <a href="#" class="subdued"><i class="icon ion-android-favorite"></i> {{event.SelectedEvent.nbViews}} Like</a>
+        </p>
+      </div>
+
+    </div>
+
 
   </ion-content>
 </ion-view>

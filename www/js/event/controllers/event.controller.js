@@ -5,15 +5,17 @@
   'use strict';
 
   angular
-    .module('EventifyApp.event', [])
+    .module('EventifyApp.event', [
+      'angularMoment',
+      'ngMap',
+      'ngCordova',
+
+    ])
     .config(ConfigFN)
 
     .controller('EventCtrl', EventCtrl);
 
   EventCtrl.$inject = ['EventService', '$scope', '$filter'];
-
-
-
 
 
   function ConfigFN($stateProvider, $urlRouterProvider) {
@@ -25,6 +27,12 @@
         cache: false,
         controller: 'EventCtrl as event',
         templateUrl: "templates/event/events-listing.view.html"
+      })
+      .state('events-map', {
+        url: "/events/map",
+        cache: false,
+        controller: 'EventMapListCtrl as EventMap',
+        templateUrl: "templates/event/events-listing-map.view.html"
       })
       .state('events-details', {
         url: "/events/detail/:id",
@@ -38,11 +46,6 @@
     $urlRouterProvider.otherwise('/events');
 
   }
-
-
-
-
-
 
 
   /* @ngInject */
@@ -65,36 +68,37 @@
 
         vm.loadMore();
       });
-      // vm.getEvents();
-      vm.loadMore = function () {
-        for (var i = vm.allEvents.length -1; i >= 0; i--) {
-          if ((i <= vm.start) && (i > vm.end)) {
-
-            console.log(vm.allEvents[i])
-            console.log(i)
-            vm.events.push(vm.allEvents[i]);
-
-          }
-        }
-
-        // $filter('orderBy')(vm.events, 'id');
-
-        $scope.$broadcast('scroll.infiniteScrollComplete');
-        vm.start = vm.start - 3;
-        vm.end = vm.end - 3;
-
-      };
-
-
-      vm.doRefresh = function () {
-        vm.events=[];
-        vm.getEvents();
-        $scope.$broadcast('scroll.refreshComplete');
-
-      };
-
 
     };
+
+    // vm.getEvents();
+    vm.loadMore = function () {
+      for (var i = vm.allEvents.length - 1; i >= 0; i--) {
+        if ((i <= vm.start) && (i > vm.end)) {
+
+          console.log(vm.allEvents[i])
+          console.log(i)
+          vm.events.push(vm.allEvents[i]);
+
+        }
+      }
+
+      // $filter('orderBy')(vm.events, 'id');
+
+      $scope.$broadcast('scroll.infiniteScrollComplete');
+      vm.start = vm.start - 3;
+      vm.end = vm.end - 3;
+
+    };
+
+
+    vm.doRefresh = function () {
+      vm.events = [];
+      vm.getEvents();
+      $scope.$broadcast('scroll.refreshComplete');
+
+    };
+
 
   }
 
