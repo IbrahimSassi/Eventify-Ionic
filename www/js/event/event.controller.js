@@ -61,7 +61,6 @@
     vm.events = [];
 
 
-
     //Getting All Events
     vm.getEvents = function () {
       EventService.getAllEvents().then(function (data) {
@@ -94,7 +93,7 @@
         vm.start = vm.start - 3;
         vm.end = vm.end - 3;
 
-      },2000);
+      }, 2000);
 
     };
 

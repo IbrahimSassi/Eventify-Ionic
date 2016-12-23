@@ -42,9 +42,6 @@
     vm.title = 'Home';
 
 
-
-
-
   }
 
 
