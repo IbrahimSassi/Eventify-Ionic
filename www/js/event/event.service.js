@@ -17,11 +17,18 @@
 
 
       this.getAllEvents = getAllEventsFN;
+      this.getEventById = getEventByIdFN;
 
 
 
         function getAllEventsFN() {
             return EventFactory.query().$promise;
+        }
+
+        function getEventByIdFN(id) {
+          console.log("called");
+          console.log(EventFactory.get({id:id}));
+          return EventFactory.get({id:id});
         }
 
 

@@ -1,19 +1,26 @@
-<ion-view>
+<ion-view ng-init="event.getEvents()">
 
 
   <ion-content padding="true">
+
+
+    <ion-refresher
+      pulling-text="Pull to refresh..."
+      on-refresh="event.doRefresh()">
+    </ion-refresher>
+
 
     <div ng-repeat="event in event.events" class="list card">
 
       <div class="item item-avatar">
         <img src="{{event.backgroundImage}}">
-        <h2>{{event.title}}</h2>
+        <h2>{{event.title}} </h2>
         <p>{{event.theme}}</p>
       </div>
 
-      <div class="item item-image">
+      <a  ui-sref="events-details({id:event.id})" class="item item-image">
         <img src="{{event.backgroundImage}}">
-      </div>
+      </a>
 
       <a class="item calm" href="#">
         <i class="icon ion-bookmark"></i>
@@ -25,9 +32,13 @@
       </a>
 
 
-
-
     </div>
+
+    <ion-infinite-scroll
+      on-infinite="event.loadMore()"
+      distance="1%">
+    </ion-infinite-scroll>
+
 
 
   </ion-content>
