@@ -41,7 +41,6 @@
 
 
         function getWishlistsByUserAndEventFN(UserId, eventId) {
-            // console.log(WishlistFactory.query({userId:UserId,eventId:eventId}))
             return WishlistFactory.get({userId: UserId, eventId: eventId}).$promise;
         }
 

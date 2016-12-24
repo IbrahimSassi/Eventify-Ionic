@@ -9,7 +9,7 @@
     'ngResource',
     'EventifyApp.home',
     'EventifyApp.event',
-    'EventifyApp.wishlist'
+    'EventifyApp.wishlist',
   ])
 
     .config(ConfigFN)

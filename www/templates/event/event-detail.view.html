@@ -3,19 +3,32 @@
 
   <ion-content padding="true">
 
-    <div class="list card">
+    <div class="list card ">
 
-      <div class="item item-avatar">
+      <div class="item item-avatar assertive-bg">
         <img ng-src="{{event.SelectedEvent.backgroundImage}}">
-        <h2>{{event.SelectedEvent.organization.organizationName}}</h2>
+        <h2 class="light">{{event.SelectedEvent.organization.organizationName}}</h2>
         <p>
-          Created <span am-time-ago="event.SelectedEvent.createdAt" am-preprocess="unix"></span></p>
+          <span class="light">Created</span> <span class="light" am-time-ago="event.SelectedEvent.createdAt"
+                                                   am-preprocess="unix"></span></p>
         </p>
       </div>
 
-      <div class="item item-body">
+      <div class="item item-body myCardBg">
         <img class="full-image" src="{{event.SelectedEvent.backgroundImage}}">
-        <h1>{{event.SelectedEvent.title}}</h1>
+
+        <button ng-click="event.addToWishlist(event.SelectedEvent)" ng-if="event.existInWishlist" class="item assertive-bg" style="width: 100%">
+          <span class="light">
+            <i class="icon ion-ios-bookmarks-outline "></i> Bookmarked
+          </span>
+        </button>
+
+        <button ng-click="event.addToWishlist(event.SelectedEvent)" ng-if="!event.existInWishlist" class="item assertive" style="width: 100%">
+          <i class="icon ion-bookmark"></i>
+          Bookmark
+        </button>
+
+        <h1 class="text-center">{{event.SelectedEvent.title}}</h1>
         <p><i class="icon ion-android-time"></i> Starts on : {{event.SelectedEvent.startTime |
           amCalendar:referenceTime:formats}}</p>
         <p><i class="icon ion-calendar"></i> Ends on : {{event.SelectedEvent.endTime |
@@ -45,9 +58,6 @@
         </map>
 
       </div>
-
-
-
 
 
     </div>

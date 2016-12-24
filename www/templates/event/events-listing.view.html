@@ -1,5 +1,12 @@
 <ion-view view-title="Events" ng-init="event.getEvents()">
 
+  <ion-nav-buttons side="secondary" >
+    <button class="button button-clear"
+            ui-sref="app.events-map">
+      <i class="icon ion-map"></i> Map Listing
+    </button >
+  </ion-nav-buttons >
+
 
   <ion-content padding="true">
     <div class="bar bar-header item-input-inset">
@@ -18,22 +25,29 @@
     </ion-refresher>
 
 
-    <div ng-repeat="event in event.events | filter:event.search" class="list card">
+    <div ng-repeat="e in event.events | filter:event.search" class="list card padding">
 
       <div class="item item-avatar">
-        <img ng-src="{{event.backgroundImage}}">
-        <h2>{{event.title}} </h2>
-        <p>{{event.theme}}</p>
+        <img ng-src="{{e.backgroundImage}}">
+        <h2>{{e.title}} </h2>
+        <p>{{e.theme}}</p>
       </div>
 
-      <a ui-sref="app.events-details({id:event.id})" class="item item-image">
-        <img ng-src="{{event.backgroundImage}}">
+      <a ui-sref="app.events-details({id:e.id})" class="item item-image">
+        <img ng-src="{{e.backgroundImage}}">
       </a>
 
-      <a class="item calm" href="#">
-        <i class="icon ion-bookmark"></i>
-        Bookmark
-      </a>
+      <div class="tabs">
+        <button ng-click="event.addToWishlist(e)" class="item assertive" style="width: 50%">
+          <i class="icon ion-bookmark"></i>
+          Bookmark
+        </button>
+        <button class="item assertive" style="width: 50%">
+          <i class="icon ion-android-favorite"></i>
+          Like
+        </button>
+
+      </div>
 
     </div>
 

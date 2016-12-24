@@ -14,7 +14,7 @@
 
     .controller('EventCtrl', EventCtrl);
 
-  EventCtrl.$inject = ['EventService', '$scope', '$filter'];
+  EventCtrl.$inject = ['EventService', '$scope', '$filter','WishlistService'];
 
 
   function ConfigFN($stateProvider, $urlRouterProvider) {
@@ -34,11 +34,16 @@
       })
 
       //ce type de state sont des etats indépendantes
-      .state('events-map', {
+      .state('app.events-map', {
         url: "/events/map",
         cache: false,
-        controller: 'EventMapListCtrl as EventMap',
-        templateUrl: "templates/event/events-listing-map.view.html"
+        views: {
+          'menuContent': {
+            controller: 'EventMapListCtrl as EventMap',
+            templateUrl: "templates/event/events-listing-map.view.html"
+          }
+        }
+
       })
 
 
@@ -62,13 +67,17 @@
 
 
   /* @ngInject */
-  function EventCtrl(EventService, $scope, $filter) {
+  function EventCtrl(EventService, $scope, $filter,WishlistService) {
     var vm = this;
     vm.title = 'EventCtrl';
 
-
+    activate();
     vm.events = [];
 
+
+    function activate() {
+      // WishlistService.getWishlistsByUserAndEvent()
+    }
 
     //Getting All Events
     vm.getEvents = function () {
@@ -114,6 +123,11 @@
 
     };
 
+    vm.currentUser = 1;
+
+    vm.addToWishlist = function (event) {
+      WishlistService.addToWishlist(vm.currentUser,event.id);
+    }
 
   }
 

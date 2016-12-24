@@ -1,1 +1,9 @@
 /* Empty. Add your own CSS if you like */
+.no-border{
+  border: 0;
+  color: orangered;
+}
+
+.myCardBg{
+  background-color: #ecf0f1;
+}
