@@ -25,6 +25,7 @@
       })
       .state('app.home', {
         url: '/home',
+        authenticate: true,
         views: {
           'menuContent': {
             controller: 'HomeCtrl as home',

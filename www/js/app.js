@@ -9,11 +9,13 @@
     'ngResource',
     'EventifyApp.home',
     'EventifyApp.event',
-    'EventifyApp.wishlist'
+    'EventifyApp.wishlist',
+    'EventifyApp.user'
+
   ])
 
     .config(ConfigFN)
-    .run(function ($ionicPlatform) {
+    .run(function ($ionicPlatform, $rootScope,UserService,$state) {
       $ionicPlatform.ready(function () {
         if (window.cordova && window.cordova.plugins.Keyboard) {
           // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -29,6 +31,27 @@
           StatusBar.styleDefault();
         }
       });
+
+      /**Redirect if not login*/
+      $rootScope.$on("$stateChangeStart", function (event, toState) {
+        if (toState.authenticate && !UserService.isAuth()) {
+          $rootScope.currentUser = null;
+
+          $state.transitionTo("loginUser");
+          event.preventDefault();
+        }
+        else if (!UserService.isAuth()) {
+          $rootScope.currentUser = null;
+        }
+        else {
+          $rootScope.currentUser = UserService.extractTokenData(UserService.getToken());
+          $rootScope.logMeOut = function () {
+            UserService.logout();
+            $state.reload();
+          }
+        }
+      });
+      /**/
     });
 
   function ConfigFN($stateProvider, $urlRouterProvider) {

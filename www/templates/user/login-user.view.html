@@ -1,0 +1,14 @@
+<ion-view title="Login">
+  <ion-content class="padding">
+    <div class="list list-inset">
+      <label class="item item-input">
+        <input type="text" placeholder="Username" ng-model="user.toLoginUser.username">
+      </label>
+      <br>
+      <label class="item item-input">
+        <input type="password" placeholder="Password" ng-model="user.toLoginUser.pwd">
+      </label>
+    </div>
+    <button class="button button-block button-assertive" ng-click="user.signIn(user.toLoginUser.username,user.toLoginUser.pwd)">Login</button>
+  </ion-content>
+</ion-view>
