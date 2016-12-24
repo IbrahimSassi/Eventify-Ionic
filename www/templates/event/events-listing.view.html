@@ -25,27 +25,33 @@
     </ion-refresher>
 
 
-    <div ng-repeat="e in event.events | filter:event.search" class="list card padding">
+    <div ng-repeat="e in event.events | filter:event.search" class="list card padding ">
 
       <div class="item item-avatar">
         <img ng-src="{{e.backgroundImage}}">
         <h2>{{e.title}} </h2>
         <p>{{e.theme}}</p>
+        <p class="text-center"><i class="icon ion-android-time"></i> Starts on : {{e.startTime |
+          amCalendar:referenceTime:formats}}</p>
+
       </div>
 
-      <a ui-sref="app.events-details({id:e.id})" class="item item-image">
-        <img ng-src="{{e.backgroundImage}}">
-      </a>
+      <div class="item-body">
+        <a ui-sref="app.events-details({id:e.id})" class="item item-image padding-bottom">
+          <img ng-src="{{e.backgroundImage}}">
+        </a>
 
-      <div class="tabs">
-        <button ng-click="event.addToWishlist(e)" class="item assertive" style="width: 50%">
-          <i class="icon ion-bookmark"></i>
-          Bookmark
-        </button>
-        <button class="item assertive" style="width: 50%">
-          <i class="icon ion-android-favorite"></i>
-          Like
-        </button>
+        <div class="tabs" style="margin-left: -30px;background-color: white">
+          <button ng-click="event.addToWishlist(e)" class="item assertive" style="width: 50%">
+            <i class="icon ion-bookmark"></i>
+            Bookmark
+          </button>
+          <button class="item assertive" style="width: 30%">
+            <i class="icon ion-android-favorite"></i>
+            Like
+          </button>
+
+        </div>
 
       </div>
 

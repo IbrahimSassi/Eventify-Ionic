@@ -8,10 +8,10 @@
     .module('EventifyApp.event')
     .controller('EventDetailCtrl', EventDetailCtrl);
 
-  EventDetailCtrl.$inject = ['EventService', '$state', '$stateParams', 'WishlistService'];
+  EventDetailCtrl.$inject = ['EventService', '$state', '$stateParams', 'WishlistService','$ionicPopup','$timeout'];
 
   /* @ngInject */
-  function EventDetailCtrl(EventService, $state, $stateParams, WishlistService) {
+  function EventDetailCtrl(EventService, $state, $stateParams, WishlistService,$ionicPopup,$timeout) {
     var vm = this;
     vm.title = 'EventDetailCtrl';
     vm.currentUser = 1;
@@ -22,12 +22,35 @@
 
 
     vm.addToWishlist = function (event) {
+      var title = '';
+      var template = '';
       if (vm.existInWishlist)
+      {
         WishlistService.removeFromWishlist(vm.currentUser, event.id);
+        title = 'Done';
+        template = 'Removed ..';
+      }
       else
+      {
         WishlistService.addToWishlist(vm.currentUser, event.id);
+        title = 'Added To Wishlist ..';
+        template = 'Added To Wishlist ..';
 
+      }
       vm.existInWishlist = !vm.existInWishlist;
+
+
+      var alertPopup = $ionicPopup.alert({
+        title: title,
+        template: template
+      });
+
+
+      $timeout(function() {
+        alertPopup.close(); //close the popup after 3 seconds for some reason
+      }, 2000);
+
+
 
     }
 

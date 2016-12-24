@@ -15,6 +15,7 @@
       </div>
 
       <div class="item item-body myCardBg">
+
         <img class="full-image" src="{{event.SelectedEvent.backgroundImage}}">
 
         <button ng-click="event.addToWishlist(event.SelectedEvent)" ng-if="event.existInWishlist" class="item assertive-bg" style="width: 100%">
@@ -29,18 +30,19 @@
         </button>
 
         <h1 class="text-center">{{event.SelectedEvent.title}}</h1>
-        <p><i class="icon ion-android-time"></i> Starts on : {{event.SelectedEvent.startTime |
-          amCalendar:referenceTime:formats}}</p>
-        <p><i class="icon ion-calendar"></i> Ends on : {{event.SelectedEvent.endTime |
-          amCalendar:referenceTime:formats}}</p>
-        <p>
+        <p class="text-center light-bg">
           {{event.SelectedEvent.theme}}.
         </p>
-        <p>
-          <a href="#" class="subdued"><i class="icon ion-android-favorite"></i> {{event.SelectedEvent.nbViews}} Like</a>
-        </p>
 
-        <h2>Here We Are</h2>
+        <p class="text-center"><i class="icon ion-android-time"></i> Starts on : {{event.SelectedEvent.startTime |
+          amCalendar:referenceTime:formats}}</p>
+        <p class="text-center"><i class="icon ion-calendar"></i> Ends on : {{event.SelectedEvent.endTime |
+          amCalendar:referenceTime:formats}}</p>
+        <p class="text-center">
+          <a ng-click="" class="subdued assertive"><i class="icon ion-android-favorite"></i> {{event.SelectedEvent.nbViews}} Like</a>
+        </p>
+        <hr>
+        <h2 class="dark-bg light text-center">Here We Are</h2>
         <map center="{{event.myPostion.lat}},{{event.myPostion.long}}"
              zoom="7"
              style="width: 100%;height: 100%;margin:0;padding:0">
