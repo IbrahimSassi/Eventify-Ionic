@@ -9,10 +9,10 @@
     .module('EventifyApp.event')
     .controller('EventMapListCtrl', EventMapListCtrl);
 
-  EventMapListCtrl.$inject = ['EventService', '$state', '$stateParams','$scope'];
+  EventMapListCtrl.$inject = ['EventService','$scope','$cordovaLaunchNavigator'];
 
   /* @ngInject */
-  function EventMapListCtrl(EventService, $state, $stateParams,$scope) {
+  function EventMapListCtrl(EventService,$scope,$cordovaLaunchNavigator) {
     var vm = this;
     vm.title = 'EventDetailCtrl';
     vm.myPostion =EventService.myPostion;
@@ -51,7 +51,13 @@
         vm.myPostion.long
       ];
 
-      launchnavigator.navigate(destination, source);
+      // launchnavigator.navigate(destination, source);
+      $cordovaLaunchNavigator.navigate(destination, source).then(function() {
+        console.log("Navigator launched");
+      }, function (err) {
+        console.error(err);
+      });
+
     };
 
     vm.getDistance = function (lat1,lon1,lat2,lon2) {

@@ -6,10 +6,13 @@
 // the 2nd parameter is an array of 'requires'
   angular.module('EventifyApp', [
     'ionic',
+    'ionic.cloud',
+    'ngCordova',
     'ngResource',
     'EventifyApp.home',
     'EventifyApp.event',
     'EventifyApp.wishlist',
+
   ])
 
     .config(ConfigFN)
@@ -29,13 +32,38 @@
           StatusBar.styleDefault();
         }
       });
+
+
+
+
     });
 
-  function ConfigFN($stateProvider, $urlRouterProvider) {
-
+  function ConfigFN($stateProvider, $urlRouterProvider,$ionicCloudProvider) {
 
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/app/home');
+
+
+    //Ibra Push Notification Work
+    $ionicCloudProvider.init({
+      "core": {
+        "app_id": "d1d31451"
+      },
+      "push": {
+        "sender_id": "605887726842",
+        "pluginConfig": {
+          "ios": {
+            "badge": true,
+            "sound": true
+          },
+          "android": {
+            "iconColor": "#343434"
+          }
+        }
+      }
+    });
+
+
 
   }
 
