@@ -10,7 +10,8 @@
     'EventifyApp.home',
     'EventifyApp.event',
     'EventifyApp.wishlist',
-    'EventifyApp.user'
+    'EventifyApp.user',
+    'EventifyApp.reservation'
 
   ])
 
