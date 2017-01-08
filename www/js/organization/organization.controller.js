@@ -31,7 +31,30 @@
               }
             })
 
+          .state('app.EditOrganizations', {
+            url: '/organizations/update/:OrganizationId',
+            views: {
+              'menuContent': {
+                templateUrl: 'templates/organization/EditOrganization.html',
+                controller: 'OrganizationCtrl as OrganizationEdit'
+              }
+            }
 
+          })
+
+
+
+          .state('app.createOrganization', {
+            url: '/organizations/create',
+            views: {
+              'menuContent': {
+                templateUrl: 'templates/organization/createOrganization.html',
+                controller: 'OrganizationCtrl as organizationCreate'
+              }
+            }
+
+
+          })
 
 
 
@@ -145,7 +168,7 @@
 
         vm.update = function () {
             OrganizationService.updateOrganization(vm.editedOragnization);
-            $state.go('listOrganizations')
+            $state.go('app.listOrganizations')
         };
 
         /*end update fct*/

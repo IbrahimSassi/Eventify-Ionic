@@ -1,0 +1,46 @@
+
+<ion-view view-title="Organization List">
+
+
+  <ion-content padding="true">
+
+
+<span ng-init="OrganizationEdit.displayToUpdate()">
+
+</span>
+
+
+
+
+
+
+    <div class="list">
+      <div class="page-title">
+        <h1>Edit Organization</h1>
+      </div>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">creation Date</span>
+        <input type="text" placeholder="John" ng-model="OrganizationEdit.editedOragnization.creationDate | date">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">organization Name</span>
+        <input type="text" placeholder="Suhr" ng-model="OrganizationEdit.editedOragnization.organizationName">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">organization Type</span>
+        <input type="text" placeholder="john@suhr.com" ng-model="OrganizationEdit.editedOragnization.organizationType">
+      </label>
+      <button class="button button-assertive" ng-click="OrganizationEdit.update()">
+       Edit
+      </button>
+    </div>
+
+
+
+
+
+
+
+
+  </ion-content>
+</ion-view>
