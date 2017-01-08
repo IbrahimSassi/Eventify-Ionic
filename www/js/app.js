@@ -14,8 +14,10 @@
     'EventifyApp.wishlist',
     'EventifyApp.user',
     'EventifyApp.reservation',
-    'EventifyApp.organization',
+    'EventifyApp.comments',
+    'EventifyApp.rates',
     'EventifyApp.reservation',
+    'EventifyApp.organization',
     'EventifyApp.transaction',
     'EventifyApp.ticket'
 
