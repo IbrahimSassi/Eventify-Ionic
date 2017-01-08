@@ -15,6 +15,9 @@
     'EventifyApp.user',
     'EventifyApp.reservation',
     'EventifyApp.organization'
+    'EventifyApp.reservation',
+    'EventifyApp.transaction',
+    'EventifyApp.ticket'
 
   ])
 

@@ -15,8 +15,22 @@
     return $resource('http://localhost:18080/Eventify-web/rest/reservation/:id',
       {id: '@id'},
       {
-        'update': {method: 'PUT'}
+        'update': {method: 'PUT'},
+
+        'getUsersByReservation': {
+          url: 'http://localhost:18080/Eventify-web/rest/reservation/find',
+          params: {
+            userId: '@userId',
+
+          },
+          method: 'GET',
+          isArray:true
+
+
+        }
       }
+
+
     );
   }
 
