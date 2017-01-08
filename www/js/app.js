@@ -15,7 +15,7 @@
     'EventifyApp.user',
     'EventifyApp.reservation',
     'EventifyApp.comments',
-    'EventifyApp.rates'
+    'EventifyApp.rates',
     'EventifyApp.reservation',
     'EventifyApp.organization',
     'EventifyApp.transaction',
