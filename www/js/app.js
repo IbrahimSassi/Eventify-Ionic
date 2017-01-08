@@ -13,7 +13,9 @@
     'EventifyApp.event',
     'EventifyApp.wishlist',
     'EventifyApp.user',
-    'EventifyApp.reservation'
+    'EventifyApp.reservation',
+    'EventifyApp.comments',
+    'EventifyApp.rates'
 
   ])
 

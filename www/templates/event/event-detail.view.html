@@ -3,7 +3,7 @@
 
   <ion-content padding="true">
 
-    <div class="list card ">
+    <div class="list card">
 
       <div class="item item-avatar assertive-bg">
         <img ng-src="{{event.SelectedEvent.backgroundImage}}">
@@ -18,13 +18,15 @@
 
         <img class="full-image" src="{{event.SelectedEvent.backgroundImage}}">
 
-        <button ng-click="event.addToWishlist(event.SelectedEvent)" ng-if="event.existInWishlist" class="item assertive-bg" style="width: 100%">
+        <button ng-click="event.addToWishlist(event.SelectedEvent)" ng-if="event.existInWishlist"
+                class="item assertive-bg" style="width: 100%">
           <span class="light">
             <i class="icon ion-ios-bookmarks-outline "></i> Bookmarked
           </span>
         </button>
 
-        <button ng-click="event.addToWishlist(event.SelectedEvent)" ng-if="!event.existInWishlist" class="item assertive" style="width: 100%">
+        <button ng-click="event.addToWishlist(event.SelectedEvent)" ng-if="!event.existInWishlist"
+                class="item assertive" style="width: 100%">
           <i class="icon ion-bookmark"></i>
           Bookmark
         </button>
@@ -39,7 +41,8 @@
         <p class="text-center"><i class="icon ion-calendar"></i> Ends on : {{event.SelectedEvent.endTime |
           amCalendar:referenceTime:formats}}</p>
         <p class="text-center">
-          <a ng-click="" class="subdued assertive"><i class="icon ion-android-favorite"></i> {{event.SelectedEvent.nbViews}} Like</a>
+          <a ng-click="" class="subdued assertive"><i class="icon ion-android-favorite"></i>
+            {{event.SelectedEvent.nbViews}} Like</a>
         </p>
         <hr>
         <h2 class="dark-bg light text-center">Here We Are</h2>
@@ -58,6 +61,105 @@
             position="{{[event.SelectedEvent.latitude,event.SelectedEvent.longitude]}}">
           </marker>
         </map>
+
+      </div>
+      <br>
+      <h2>Comments </h2>
+      <div class="list">
+
+        <a ng-repeat="comment in event.commentList" class="item item-avatar" href="#">
+          <img src="{{comment.user.profileImage}}">
+          <h2>{{comment.user.firstName}}</h2>
+          <p>{{comment.contain}}</p>
+        </a>
+
+      </div>
+
+      <br>
+
+      <button class="button button-dark btn-small pull-right" ng-click="event.displayRate=!event.displayRate">Add Rate</button>
+
+      <div class="list" style="text-align: center">
+
+
+        <div ng-if="event.displayRate">
+          <div class="item">
+
+            <div class="rating-title">Place</div>
+
+            <input ng-model="event.rate.place" type="radio" value="1" name="food" id="rating-food-1">
+            <label for="rating-food-1"></label>
+            <input ng-model="event.rate.place" type="radio" value="2" name="food" id="rating-food-2">
+            <label for="rating-food-2"></label>
+            <input ng-model="event.rate.place" type="radio" value="3" name="food" id="rating-food-3">
+            <label for="rating-food-3"></label>
+            <input ng-model="event.rate.place" type="radio" value="4" name="food" id="rating-food-4">
+            <label for="rating-food-4"></label>
+            <input ng-model="event.rate.place" type="radio" value="5" name="food" id="rating-food-5">
+            <label for="rating-food-5"></label>
+
+          </div><!-- /.col-sm-3 -->
+          <br>
+          <div class="item">
+
+            <div class="rating-title">Staff</div>
+
+            <input ng-model="event.rate.staff" type="radio" value="1" name="staff" id="rating-staff-1">
+            <label for="rating-staff-1"></label>
+            <input ng-model="event.rate.staff" type="radio" value="2" name="staff" id="rating-staff-2">
+            <label for="rating-staff-2"></label>
+            <input ng-model="event.rate.staff" type="radio" value="3" name="staff" id="rating-staff-3">
+            <label for="rating-staff-3"></label>
+            <input ng-model="event.rate.staff" type="radio" value="4" name="staff" id="rating-staff-4">
+            <label for="rating-staff-4"></label>
+            <input ng-model="event.rate.staff" type="radio" value="5" name="staff" id="rating-staff-5">
+            <label for="rating-staff-5"></label>
+
+          </div><!-- /.col-sm-3 -->
+          <br>
+
+          <div class="item">
+
+            <div class="rating-title">Price</div>
+
+            <input ng-model="event.rate.price" type="radio" value="1" name="value" id="rating-value-1">
+            <label for="rating-value-1"></label>
+            <input ng-model="event.rate.price" type="radio" value="2" name="value" id="rating-value-2">
+            <label for="rating-value-2"></label>
+            <input ng-model="event.rate.price" type="radio" value="3" name="value" id="rating-value-3">
+            <label for="rating-value-3"></label>
+            <input ng-model="event.rate.price" type="radio" value="4" name="value" id="rating-value-4">
+            <label for="rating-value-4"></label>
+            <input ng-model="event.rate.price" type="radio" value="5" name="value" id="rating-value-5">
+            <label for="rating-value-5"></label>
+
+          </div><!-- /.col-sm-3 -->
+          <br>
+
+          <div class="item">
+
+            <div class="rating-title">Organization</div>
+
+            <input ng-model="event.rate.organization" type="radio" value="1" name="atmosphere" id="rating-atmosphere-1">
+            <label for="rating-atmosphere-1"></label>
+            <input ng-model="event.rate.organization" type="radio" value="2" name="atmosphere" id="rating-atmosphere-2">
+            <label for="rating-atmosphere-2"></label>
+            <input ng-model="event.rate.organization" type="radio" value="3" name="atmosphere" id="rating-atmosphere-3">
+            <label for="rating-atmosphere-3"></label>
+            <input ng-model="event.rate.organization" type="radio" value="4" name="atmosphere" id="rating-atmosphere-4">
+            <label for="rating-atmosphere-4"></label>
+            <input ng-model="event.rate.organization" type="radio" value="5" name="atmosphere" id="rating-atmosphere-5">
+            <label for="rating-atmosphere-5"></label>
+
+          </div><!-- /.col-sm-3 -->
+        </div>
+
+
+        <label class="item item-input">
+          <i class="icon ion-ios-chatboxes-outline"></i>
+          <input ng-model="event.comment.contain" type="text" placeholder="Add Event">
+        </label>
+        <button ng-click="event.addCommentCTRL()" class="button button-assertive button-block">Submit Comment</button>
 
       </div>
 
