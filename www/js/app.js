@@ -14,7 +14,7 @@
     'EventifyApp.wishlist',
     'EventifyApp.user',
     'EventifyApp.reservation',
-    'EventifyApp.organization'
+    'EventifyApp.organization',
     'EventifyApp.reservation',
     'EventifyApp.transaction',
     'EventifyApp.ticket'
