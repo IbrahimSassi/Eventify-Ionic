@@ -51,10 +51,9 @@
 
 vm.getAllReservationByUser = function () {
 
-
-  ReservationService.getAllReservations().then(function (data) {
-    vm.allreservations = data;
-    console.log("Event Participation: ",data)
+  ReservationService.getReservationByIdUser({userId:$rootScope.currentUser.User.id}).then(function (data) {
+    vm.allreservationsByUser = data;
+    console.log("Event Participation By User: ",data)
 
   });
 

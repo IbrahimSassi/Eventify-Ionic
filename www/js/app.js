@@ -16,6 +16,10 @@
     'EventifyApp.reservation',
     'EventifyApp.comments',
     'EventifyApp.rates'
+    'EventifyApp.reservation',
+    'EventifyApp.organization',
+    'EventifyApp.transaction',
+    'EventifyApp.ticket'
 
   ])
 
