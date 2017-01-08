@@ -24,6 +24,8 @@
     this.getAllEvents = getAllEventsFN;
     this.getEventById = getEventByIdFN;
     this.ListingEventsInMap = ListingEventsInMapFN;
+    this.getMyRate = getMyRateFN;
+
 
     function getAllEventsFN() {
       return EventFactory.query().$promise;
@@ -32,6 +34,13 @@
     function getEventByIdFN(id) {
       return EventFactory.get({id: id});
     }
+
+    function getMyRateFN(id) {
+
+      // console.log(EventFactory.getMyRate({idEvent:id}).$promise);
+      return EventFactory.getMyRate({idEvent: id}).$promise;
+    }
+
 
 
     function ListingEventsInMapFN() {
