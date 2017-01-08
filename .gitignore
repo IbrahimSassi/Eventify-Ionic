@@ -10,3 +10,4 @@ bower_components/
 .idea
 .DS_Store
 lib/
+!lib/push-script

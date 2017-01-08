@@ -6,7 +6,7 @@
 // the 2nd parameter is an array of 'requires'
   angular.module('EventifyApp', [
     'ionic',
-    'ionic.cloud',
+    // 'ionic.cloud',
     'ngCordova',
     'ngResource',
     'EventifyApp.home',
