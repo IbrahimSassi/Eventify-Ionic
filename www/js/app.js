@@ -19,7 +19,7 @@
     'EventifyApp.organization',
     'EventifyApp.transaction',
     'EventifyApp.ticket',
-    'EventifyApp.bank'
+    'EventifyApp.bank',
     'EventifyApp.ticket',
     'EventifyApp.discussion',
     'EventifyApp.task'
