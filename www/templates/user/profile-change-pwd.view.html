@@ -1,0 +1,45 @@
+<ion-view view-title="Setting">
+
+
+  <ion-content padding="true">
+
+
+    <div class="list">
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Old Password</span>
+        <input ng-model="user.userToChange.oldPwd" type="text" >
+      </label>
+
+
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">New Password</span>
+        <input ng-model="user.userToChange.newPwd" type="text">
+      </label>
+
+      <button ng-click="user.changePasswordCTRL(currentUser.User,user.userToChange.oldPwd,user.userToChange.newPwd)" class="button button-full button-balanced">
+        Change Password
+      </button>
+
+    </div>
+
+
+    <div class="tabs-striped tabs-color-assertive">
+      <div class="tabs">
+        <a class="tab-item" ui-sref="app.userProfile">
+          <i class="icon ion-person"></i>
+          profile
+        </a>
+        <a class="tab-item" ui-sref="app.userProfileModification">
+          <i class="icon ion-gear-b"></i>
+          Setting
+        </a>
+        <a class="tab-item active" ui-sref="app.userPwd">
+          <i class="icon ion-locked"></i>
+          Password
+        </a>
+      </div>
+    </div>
+
+
+  </ion-content>
+</ion-view>

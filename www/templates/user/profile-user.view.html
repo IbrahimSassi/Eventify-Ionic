@@ -1,0 +1,108 @@
+<ion-view view-title="Profile">
+
+
+
+
+  <ion-content padding="true">
+    <!--<div class="bar bar-header item-input-inset">-->
+      <!--<label class="item-input-wrapper">-->
+        <!--<i class="icon ion-ios-search placeholder-icon"></i>-->
+        <!--<input type="search"-->
+               <!--ng-model="event.search"-->
+               <!--placeholder="Search ..">-->
+      <!--</label>-->
+    <!--</div>-->
+
+    <!--<div class="tabs-striped tabs-top tabs-background-positive tabs-color-light">-->
+
+    <!--</div>-->
+
+    <div class="list card">
+<center>
+
+        <img style="max-width:200px;max-height:200px;   border-radius: 50%;" src="{{currentUser.User.profileImage}}">
+
+</center>
+      <a class="item item-avatar" ui-sref="app.userProfileModification">
+
+        <h2 style="margin-left:19%;margin-right: auto;font-size: 1.3em;">  <b>{{currentUser.User.firstName}} {{currentUser.User.lastName}}</b></h2>
+
+      </a>
+      <a ui-sref="app.userProfileModification" class="item item-icon-left">
+
+        <i class="icon ion-android-person"></i>
+        {{currentUser.User.username}}
+      </a>
+
+
+      <a ui-sref="app.userProfileModification" class="item item-icon-left">
+        <i class="icon ion-ios-telephone"></i>
+        {{currentUser.User.numTel}}
+      </a>
+
+      <a ui-sref="app.userProfileModification" class="item item-icon-left">
+        <i class="icon ion-android-mail"></i>
+        {{currentUser.User.email}}
+      </a>
+
+
+
+    </div>
+
+
+    <div class="tabs-striped tabs-color-assertive">
+      <div class="tabs">
+        <a class="tab-item active" ui-sref="app.userProfile">
+          <i class="icon ion-person"></i>
+          profile
+        </a>
+        <a class="tab-item" ui-sref="app.userProfileModification">
+          <i class="icon ion-gear-b"></i>
+          Setting
+        </a>
+        <a class="tab-item" ui-sref="app.userPwd">
+          <i class="icon ion-locked"></i>
+          Password
+        </a>
+      </div>
+    </div>
+
+
+
+    <!--<div ng-repeat="e in event.events | filter:event.search" class="list card padding ">-->
+
+      <!--<div class="item item-avatar">-->
+        <!--<img ng-src="{{e.backgroundImage}}">-->
+        <!--<h2>{{e.title}} </h2>-->
+        <!--<p>{{e.theme}}</p>-->
+        <!--<p class="text-center"><i class="icon ion-android-time"></i> Starts on : {{e.startTime |-->
+          <!--amCalendar:referenceTime:formats}}</p>-->
+
+      <!--</div>-->
+
+      <!--<div class="item-body">-->
+        <!--<a ui-sref="app.events-details({id:e.id})" class="item item-image padding-bottom">-->
+          <!--<img ng-src="{{e.backgroundImage}}">-->
+        <!--</a>-->
+
+        <!--<div class="tabs" style="margin-left: -30px;background-color: white">-->
+          <!--<button ng-click="event.addToWishlist(e)" class="item assertive" style="width: 50%">-->
+            <!--<i class="icon ion-bookmark"></i>-->
+            <!--Bookmark-->
+          <!--</button>-->
+          <!--<button class="item assertive" style="width: 30%">-->
+            <!--<i class="icon ion-android-favorite"></i>-->
+            <!--Like-->
+          <!--</button>-->
+
+        <!--</div>-->
+
+      <!--</div>-->
+
+    <!--</div>-->
+
+
+
+
+  </ion-content>
+</ion-view>

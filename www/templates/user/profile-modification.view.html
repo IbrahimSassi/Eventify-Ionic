@@ -1,0 +1,56 @@
+<ion-view view-title="Setting">
+
+
+  <ion-content padding="true">
+
+
+    <div class="list">
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Username</span>
+        <input ng-model="currentUser.User.username" type="text" value="       {{currentUser.User.username}}">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">First Name</span>
+        <input ng-model="currentUser.User.firstName" type="text" value="       {{currentUser.User.firstName}}">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Last Name</span>
+        <input ng-model="currentUser.User.lastName" type="text" value="       {{currentUser.User.lastName}}">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Email</span>
+        <input ng-model="currentUser.User.email" type="text" value="       {{currentUser.User.email}}">
+      </label>
+
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Phone Number</span>
+        <input ng-model="currentUser.User.numTel" type="text" value="       {{currentUser.User.numTel}}">
+      </label>
+
+      <button ng-click="user.updateMyUser(currentUser.User)" class="button button-full button-balanced">
+        Save
+      </button>
+
+    </div>
+
+
+    <div class="tabs-striped tabs-color-assertive">
+      <div class="tabs">
+        <a class="tab-item" ui-sref="app.userProfile">
+          <i class="icon ion-person"></i>
+          profile
+        </a>
+        <a class="tab-item active" ui-sref="app.userProfileModification">
+          <i class="icon ion-gear-b"></i>
+          Setting
+        </a>
+        <a class="tab-item" ui-sref="app.userPwd">
+          <i class="icon ion-locked"></i>
+          Password
+        </a>
+      </div>
+    </div>
+
+
+  </ion-content>
+</ion-view>

@@ -18,6 +18,15 @@
     </ion-header-bar>
     <ion-content>
       <ion-list>
+        <ion-item menu-close ui-sref="app.userProfile">
+          <div  ui-sref="app.userProfile" class="item item-avatar">
+            <img ng-src="{{currentUser.User.profileImage}}">
+            <h2>{{currentUser.User.firstName}}  {{currentUser.User.lastName}} </h2>
+            <p>Profile</p>
+
+
+          </div>
+        </ion-item>
         <ion-item menu-close ui-sref="app.home">
           Home
         </ion-item>
@@ -29,6 +38,10 @@
         </ion-item>
         <ion-item menu-close ui-sref="app.listOrganizations">
           List Organization
+        </ion-item>
+
+        <ion-item menu-close ui-sref="loginUser">
+          Log out
         </ion-item>
       </ion-list>
     </ion-content>
