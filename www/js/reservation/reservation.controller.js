@@ -7,7 +7,7 @@
   /**My Module init**/
    angular
     .module('EventifyApp.reservation', [
-      'ui.router'
+      'ui.router', 'monospaced.qrcode'
     ])
     .config(config)
     .controller('ReservationCtrl', ReservationCtrl);
@@ -32,6 +32,19 @@
           'menuContent': {
             controller: 'ReservationCtrl as reservationCtrl',
             templateUrl: "templates/reservation/myreservations.html"
+          }
+        }
+      })
+
+      .state('app.reservateForEvent', {
+        url: '/booking',
+        views: {
+          'menuContent': {
+        templateUrl: 'templates/reservation/eventBooking.html',
+        controller: 'ReservationCtrl as createReservation',
+        params: {
+          eventIDD: null,
+          tickets: null,   }
           }
         }
       })

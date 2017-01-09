@@ -1,5 +1,5 @@
-<link href="assets/reservationStufs/css/stepsstyle.css" rel="stylesheet">
-<link href="assets/reservationStufs/css/grey.css" rel="stylesheet">
+<link href="../../css/reservationStufs/css/stepsstyle.css" rel="stylesheet">
+<link href="../../css/reservationStufs/css/grey.css" rel="stylesheet">
 
 
 
@@ -24,6 +24,13 @@
         -webkit-font-smoothing: antialiased;
     }
 </style>
+
+<ion-view view-title="Event Participation" ng-init="reservationCtrl.getAllReservationByUser()">
+
+
+  <ion-content padding="true">
+
+
 <div class="mt-80">
     <div class="hero-image">
         <div class="hero-image-inner"
@@ -380,3 +387,6 @@
                 </div>
             </div>
         </div><!-- /.container -->
+
+  </ion-content>
+</ion-view>
