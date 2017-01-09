@@ -1,0 +1,32 @@
+
+
+    <span ng-init="taskDetail.GetTaskToDisplay()">
+        <br><br><br>
+        <div class="card">
+          <div class="item item-text-wrap">
+            Task Detail Area
+            <h4>Task Title :</h4>
+                            {{taskDetail.TaskToDisplay.taskTitle}}
+            <br>
+
+             <p>
+                                {{taskDetail.TaskToDisplay.taskDescription}}
+             </p>
+         <h4>Task Status</h4>
+                            <span ng-if="taskDetail.TaskToDisplay.taskStatus==2">
+                                The task  <strong> {{taskDetail.TaskToDisplay.taskTitle}} </strong> is <ul class="detail-amenities"><li class="yes">Completed</li></ul>
+                            </span>
+                            <span ng-if="taskDetail.TaskToDisplay.taskStatus!=2">
+                               The task  <strong> {{taskDetail.TaskToDisplay.taskTitle}} </strong> is <li class="no"> is not Completed</li> <br>
+                                   <button class="btn btn-primary btn-block" ng-click="taskDetail.SetCompleted(taskDetail.TaskToDisplay.id)">Set as completed</button>
+                            </span>
+
+        <!--<strong>Discuss the task with Event memebers For more detail </strong>-->
+         <!--<span><a ui-sref="discussTask({DTaskId:taskDetail.TaskToDisplay.id})">Discuss this task</a></span>-->
+
+
+
+          </div>
+        </div>
+
+</span>
