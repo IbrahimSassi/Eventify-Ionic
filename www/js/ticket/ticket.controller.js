@@ -92,7 +92,7 @@
           console.log("ti ahaya mrigla:",ticket);
           if( ((ticket.nbTickets - parseInt(vm.ticketnumber[ticket.id]))>0) || ((ticket.nbTickets - parseInt(vm.ticketnumber[ticket.id]))==0))
           {
-            $state.go('reservateForEvent', {eventIDD: 1,tickets:vm.realtickets});
+            $state.go('app.reservate', {eventIDD: 1,tickets:vm.realtickets});
 
             ticket.nbTickets = ticket.nbTickets - parseInt(vm.ticketnumber[ticket.id]);
 

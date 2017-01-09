@@ -21,17 +21,6 @@
           amCalendar:referenceTime:formats}}</p>
       </div>
 
-
-
-
-
-
-
-
-
-
-
-
       <div class="item item-body">
 
 
@@ -45,7 +34,9 @@
           </div>
 
           <div class="col">
-            <qrcode data="#REF{{reservation.ticket.event.id}}#Name{{reservation.ticket.event.title}}#Type{{reservation.ticket.typeTicket}}" download></qrcode>
+            <qrcode
+              data="#REF{{reservation.ticket.event.id}}#Name{{reservation.ticket.event.title}}#Type{{reservation.ticket.typeTicket}}"
+              download></qrcode>
           </div>
 
           <div class="col">
@@ -53,24 +44,16 @@
           </div>
 
         </div>
-<br>
+        <br>
         <div class="tabs" style="margin-left: -30px;background-color: white">
 
           {{reservation.ticket.event.theme}}
 
         </div>
 
-
-
-
       </div>
 
     </div>
-
-
-
-
-
 
 
   </ion-content>
