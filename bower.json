@@ -8,6 +8,7 @@
     "ngCordova": "^0.1.27-alpha",
     "ngmap": "^1.17.8",
     "angular-moment": "^1.0.1",
-    "angular-jwt": "^0.1.8"
+    "angular-jwt": "^0.1.8",
+    "angular-qrcode": "monospaced/angular-qrcode#^6.2.1"
   }
 }

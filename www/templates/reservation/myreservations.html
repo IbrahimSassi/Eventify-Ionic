@@ -2,28 +2,77 @@
 
 
   <ion-content padding="true">
+    <div class="bar bar-header item-input-inset">
+      <label class="item-input-wrapper">
+        <i class="icon ion-ios-search placeholder-icon"></i>
+        <input type="search"
+               ng-model="event.search"
+               placeholder="Search ..">
+      </label>
+    </div>
 
 
-
-
-
-
-    <div ng-repeat="reservation in reservationCtrl.allreservations" class="list card">
+    <div class="list card" ng-repeat="reservation in reservationCtrl.allreservationsByUser | filter:event.search">
 
       <div class="item item-avatar">
-
-        <h2>{{reservation.amount}} </h2>
-        <p>{{reservation.id}}</p>
+        <img src="{{reservation.ticket.event.backgroundImage}}">
+        <h2>{{reservation.ticket.event.title}}</h2>
+        <p class="text-center"><i class="icon ion-android-time"></i> Starts on : {{reservation.ticket.event.startTime |
+          amCalendar:referenceTime:formats}}</p>
       </div>
 
 
 
 
 
+
+
+
+
+
+
+
+      <div class="item item-body">
+
+
+        <div class="row" style="background-color: ;">
+
+          <div class="col col-75">
+
+            <h4>Your Ticket Type: <i style="color: red;">{{reservation.ticket.typeTicket}}</i></h4>
+            <h4>Price: <i style="color: red;">{{reservation.ticket.priceTicket}}$</i></h4>
+
+          </div>
+
+          <div class="col">
+            <qrcode data="#REF{{reservation.ticket.event.id}}#Name{{reservation.ticket.event.title}}#Type{{reservation.ticket.typeTicket}}" download></qrcode>
+          </div>
+
+          <div class="col">
+
+          </div>
+
+        </div>
+<br>
+        <div class="tabs" style="margin-left: -30px;background-color: white">
+
+          {{reservation.ticket.event.theme}}
+
+        </div>
+
+
+
+
+      </div>
+
     </div>
+
+
+
 
 
 
 
   </ion-content>
 </ion-view>
+

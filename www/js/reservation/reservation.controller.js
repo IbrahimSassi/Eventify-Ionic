@@ -7,7 +7,7 @@
   /**My Module init**/
    angular
     .module('EventifyApp.reservation', [
-      'ui.router'
+      'ui.router', 'monospaced.qrcode'
     ])
     .config(config)
     .controller('ReservationCtrl', ReservationCtrl);
@@ -36,6 +36,19 @@
         }
       })
 
+      .state('app.reservateForEvent', {
+        url: '/booking',
+        views: {
+          'menuContent': {
+        templateUrl: 'templates/reservation/eventBooking.html',
+        controller: 'ReservationCtrl as createReservation',
+        params: {
+          eventIDD: null,
+          tickets: null,   }
+          }
+        }
+      })
+
 
 
     ;
@@ -51,10 +64,9 @@
 
 vm.getAllReservationByUser = function () {
 
-
-  ReservationService.getAllReservations().then(function (data) {
-    vm.allreservations = data;
-    console.log("Event Participation: ",data)
+  ReservationService.getReservationByIdUser({userId:$rootScope.currentUser.User.id}).then(function (data) {
+    vm.allreservationsByUser = data;
+    console.log("Event Participation By User: ",data)
 
   });
 
