@@ -8,14 +8,22 @@
     .module('EventifyApp.reservation')
     .service('ReservationService', ReservationServiceFN);
 
-  ReservationServiceFN.$inject = ['ReservationFactory', '$filter'];
+  ReservationServiceFN.$inject = ['ReservationFactory', '$filter','TicketService'];
 
 
-  function ReservationServiceFN(ReservationFactory, $filter) {
+  function ReservationServiceFN(ReservationFactory, $filter,$rootScope,TicketService) {
 
     this.getAllReservations = function () {
       return ReservationFactory.query().$promise;
     };
+
+
+
+    this.getReservationByIdUser = function (userId) {
+      return ReservationFactory.getUsersByReservation(userId).$promise;
+    };
+
+
 
     this.addReservation =  function (reservation) {
       console.log(reservation);

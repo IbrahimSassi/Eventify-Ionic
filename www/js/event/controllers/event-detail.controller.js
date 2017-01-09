@@ -8,10 +8,15 @@
     .module('EventifyApp.event')
     .controller('EventDetailCtrl', EventDetailCtrl);
 
-  EventDetailCtrl.$inject = ['EventService', '$state', '$stateParams', 'WishlistService','$ionicPopup','$timeout'];
+  EventDetailCtrl.$inject = [
+    'EventService', '$state', '$stateParams',
+    'WishlistService', '$ionicPopup', '$timeout',
+    'CommentsService', 'ratesService', '$rootScope'];
 
   /* @ngInject */
-  function EventDetailCtrl(EventService, $state, $stateParams, WishlistService,$ionicPopup,$timeout) {
+  function EventDetailCtrl(EventService, $state, $stateParams,
+                           WishlistService, $ionicPopup, $timeout,
+                           CommentsService, ratesService, $rootScope) {
     var vm = this;
     vm.title = 'EventDetailCtrl';
     vm.currentUser = 1;
@@ -24,14 +29,12 @@
     vm.addToWishlist = function (event) {
       var title = '';
       var template = '';
-      if (vm.existInWishlist)
-      {
+      if (vm.existInWishlist) {
         WishlistService.removeFromWishlist(vm.currentUser, event.id);
         title = 'Done';
         template = 'Removed ..';
       }
-      else
-      {
+      else {
         WishlistService.addToWishlist(vm.currentUser, event.id);
         title = 'Added To Wishlist ..';
         template = 'Added To Wishlist ..';
@@ -46,10 +49,9 @@
       });
 
 
-      $timeout(function() {
+      $timeout(function () {
         alertPopup.close(); //close the popup after 3 seconds for some reason
       }, 2000);
-
 
 
     }
@@ -71,8 +73,83 @@
             vm.existInWishlist = true;
         })
 
-      })
+      });
+
+      getCommentByEventId();
     }
+
+
+    //Mourad Workk
+
+
+    vm.idUserCTRLParamUrl = $stateParams.idUserCTRL;
+    vm.idEventCTRLParamUrl = $stateParams.idEventCTRL;
+
+    if (vm.idUserCTRLParamUrl && vm.idEventCTRLParamUrl) {
+      CommentsService.getCommentByUserIdAndEventIdService(vm.idUserCTRLParamUrl, vm.idEventCTRLParamUrl).then(function (success) {
+          vm.Comment = success;
+        },
+        function (error) {
+          vm.Comment = null;
+          console.log(error);
+        }
+      );
+      console.error(vm.Comment);
+    }
+
+
+    if ($rootScope.currentUser != null) {
+      vm.comment = {
+        "user": null,
+        "event": null,
+        "contain": "",
+        "commentPK": {
+          "idUser": $rootScope.currentUser.User.id,
+          "idEvent": vm.SelectedId
+        },
+
+      };
+
+    }
+    vm.addCommentCTRL = function () {
+
+      CommentsService.addCommentService(vm.comment).then(function () {
+        getCommentByEventId();
+      });
+
+
+      vm.myRate = {
+        "ratePK": {
+          "idUser": $rootScope.currentUser.User.id,
+          "idEvent": vm.SelectedId
+        },
+        "note": ((parseInt(vm.rate.price) + parseInt(vm.rate.organization) + parseInt(vm.rate.staff) + parseInt(vm.rate.place)) / 4),
+      };
+      ratesService.addRate(vm.myRate)
+
+    }
+
+
+     function getCommentByEventId() {
+
+      CommentsService.getCommentByIdEvent(vm.SelectedId).then(function (data) {
+        vm.commentList = data;
+        console.log(vm.commentList);
+      });
+    }
+
+    vm.deleteComment = function (iduser, idevent) {
+
+      CommentsService.deleteCommentService(iduser, idevent);
+
+      vm.getCommentByEventId();
+    }
+
+    ratesService.getRateByEvent(vm.SelectedId).then(function (data) {
+      console.log("rate", data.data);
+    });
+
+
   }
 
 })();

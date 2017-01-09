@@ -6,19 +6,24 @@
 
 
 
-
-
-    <div ng-repeat="reservation in reservationCtrl.allreservations" class="list card">
+    <div class="list card" ng-repeat="reservation in reservationCtrl.allreservationsByUser">
 
       <div class="item item-avatar">
-
-        <h2>{{reservation.amount}} </h2>
-        <p>{{reservation.id}}</p>
+        <img src="{{reservation.ticket.event.backgroundImage}}">
+        <h2>{{reservation.ticket.event.title}}</h2>
+        <p>{{reservation.amount}}</p>
       </div>
 
-
-
-
+      <div class="item item-body">
+        <img class="full-image" src="delorean.jpg">
+        <p>
+          {{reservation.ticket.event.theme}}
+        </p>
+        <p>
+          <a href="#" class="subdued">1 Like</a>
+          <a href="#" class="subdued">5 Comments</a>
+        </p>
+      </div>
 
     </div>
 
@@ -27,3 +32,4 @@
 
   </ion-content>
 </ion-view>
+
