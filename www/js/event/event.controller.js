@@ -13,7 +13,7 @@
       .config(ConfigFN)
       .controller('EventCtrl', EventCtrl);
 
-    EventCtrl.$inject = ['EventService', '$scope', '$filter', 'WishlistService', '$ionicPush'];
+    EventCtrl.$inject = ['EventService', '$scope', '$filter', 'WishlistService', '$ionicPush','$state'];
 
 
     function ConfigFN($stateProvider, $urlRouterProvider) {
@@ -66,7 +66,7 @@
 
 
     /* @ngInject */
-    function EventCtrl(EventService, $scope, $filter, WishlistService, $ionicPush) {
+    function EventCtrl(EventService, $scope, $filter, WishlistService, $ionicPush,$state) {
       var vm = this;
       vm.title = 'EventCtrl';
 
@@ -143,9 +143,14 @@
 
       vm.addToWishlist = function (event) {
         WishlistService.addToWishlist(vm.currentUser, event.id);
-      }
+      };
 
 
+      vm.reservate = function () {
+        console.log("ggggggggggg");
+        $state.go('app.reservate');
+
+      };
 
 
 

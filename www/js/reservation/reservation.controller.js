@@ -95,18 +95,21 @@ vm.getAllReservationByUser = function () {
 
 }
 
-vm.reservation = {
-  user:{id:1},
-  ticket:{id:1}
-};
+
 
 
 vm.addReservationD = function () {
+
+  vm.reservation = {
+    user:{id:$rootScope.currentUser.User.id},
+    ticket:{id:2}
+  };
+
   console.log("Event Participation By User: ");
   ReservationService.addReservation(vm.reservation).then(function (data) {
     vm.allreservationsByUser = data;
     console.log("Event Participation By User: ",data)
-    $state.go('app.reservations');
+
   });
 
 };
@@ -336,7 +339,7 @@ vm.addReservationD = function () {
 
               console.log("haaha", angular.fromJson(sessionStorage.lastRes));
               TransactionService.addTransaction(vm.transaction).then(function () {
-                $state.go('thanks');
+                $state.go('app.reservations');
               });
 
 

@@ -10,28 +10,15 @@
         <span class="input-label">First Name</span>
         <input ng-model="currentUser.User.firstName" type="text" placeholder="John">
       </label>
-      <div class="item item-divider">
-        Payment Information
-      </div>
-      <label class="item item-input item-stacked-label">
-        <span class="input-label">Name on card</span>
-        <input ng-model="createReservation.creditCard.name" type="text" placeholder="Firas Allani">
+      <label class="item item-input item-floating-label">
+        <span class="input-label">Last Name</span>
+        <input ng-model="currentUser.User.lastName" type="text" placeholder="John">
+      </label>
+      <label class="item item-input item-floating-label">
+        <span class="input-label">Email</span>
+        <input ng-model="currentUser.User.email" type="text" placeholder="John">
       </label>
 
-      <label class="item item-input item-stacked-label">
-        <span class="input-label">Card number</span>
-        <input ng-model="createReservation.creditCard.num" type="text" placeholder="12453..">
-      </label>
-
-      <label class="item item-input item-stacked-label">
-        <span class="input-label">Expiration date</span>
-        <input ng-model="createReservation.creditCard.expmonth" type="text" placeholder="12/12/2020">
-      </label>
-
-      <label class="item item-input item-stacked-label">
-        <span class="input-label">Security code</span>
-        <input ng-model="createReservation.creditCard.ccv" type="text" placeholder="123">
-      </label>
       <div class="item item-divider">
         Billing Adress
       </div>
@@ -59,7 +46,7 @@
         <span class="input-label">Postal Code</span>
         <input ng-model="createReservation.reservation.postalCode" type="text" placeholder="3100">
       </label>
-      <button ng-click="createReservation.add();" class="button button-assertive button-block">Submit Reservation</button>
+      <button ng-click="createReservation.add(); createReservation.addReservationD();" class="button button-assertive button-block">Submit Reservation</button>
 
 
     </div>
